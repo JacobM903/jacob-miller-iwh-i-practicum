@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+  head
+    title= `${title}`
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/css/style.css")
+body
+    h1= "Custom Object Table"
+
+    div(style="margin-bottom: 1em;")
+        a(href="/update-cobj") Add/Update this table
+
+    table(border="1" style="border-collapse: collapse; width: 80%;")
+      thead
+        tr
+          // Table Headers
+          th(style="padding: 8px; text-align: left;") Pokedex Number
+          th(style="padding: 8px; text-align: left;") Name
+          th(style="padding: 8px; text-align: left;") Region
+      tbody
+        // Check if the 'pokemon' variable exists and has items
+        if pokemon && pokemon.length > 0
+          // Loop through each entry in the pokemon array
+          each entry in pokemon
+            tr
+              td(style="padding: 8px;")= entry.properties.pokedex_number
+              td(style="padding: 8px;")= entry.properties.name
+              td(style="padding: 8px;")= entry.properties.region
+        else
+          // Displayed if pokemon is empty or doesn't exist
+          tr
+            td(colspan="3" style="padding: 8px; text-align: center;") No Pokemon data found.
