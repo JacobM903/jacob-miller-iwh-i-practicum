@@ -1,0 +1,33 @@
+//- ** This is a sample of a pug template and how it uses the data passed to it from index.js.
+
+doctype html
+html(lang="en")
+  head
+    title= `${title}`
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/css/style.css")
+
+  body
+    h1= pageTitle || 'Add New Pokemon'
+
+    // The form will POST data to the '/update-cobj' route
+    form(method="POST", action="/update-cobj")
+      div.form-group
+        label(for="pokedex_number") Pokedex Number:
+        input(type="number", id="pokedex_number", name="pokedex_number", required)
+
+      div.form-group
+        label(for="name") Name:
+        input(type="text", id="name", name="name", required)
+
+      div.form-group
+        label(for="region") Region:
+        input(type="text", id="region", name="region", required)
+
+      div.form-actions
+        button(type="submit") Add Pokemon
+
+    hr
+
+    // Link back to the homepage (root route)
+    a(href="/") Return to the homepage
